@@ -8,11 +8,13 @@
   </li>
 <% end %>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container well">
   <h4><%= AdminUser.first.email %></h4>
   <!-- Default form contact -->
 
-    <%= form_with(url: admin_users_create_store_path(format: :json), method: :post ,class:"text-center border border-light p-5") do %>
+    <%= form_with(url: admin_users_create_store_path, method: :post ,class:"text-center border border-light p-5") do %>
 
     <p class="h4 mb-4">Create Spree Shop</p>
 
@@ -35,8 +37,26 @@
     </div>
 
     <!-- Send button -->
-    <%= submit_tag "create",  class:"btn btn-info btn-block" %>
+    <%= submit_tag "create",  class:"btn btn-info btn-block submitloader" %>
 
-  <% end %>
-  <!-- Default form contact -->
+    <button class="btn btn-primary btn-block  buttonloader d-none " type="button" >
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Preparing Shop...
+    </button>
+
+
+
+<% end %>
+
 </div>
+
+<script>
+
+    $(document).ready(function() {
+        $(".submitloader").click(function() {
+            $(this).addClass("d-none");
+            $(".buttonloader").removeClass("d-none").addClass("d-block")
+        });
+    });
+
+</script>

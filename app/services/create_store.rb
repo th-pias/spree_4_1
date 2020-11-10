@@ -28,7 +28,7 @@ class CreateStore
     
       store = Spree::Store.find_or_create_by!(
           name: store_name.titleize,
-          url: "#{store_name}.syftet.com",
+          url: "#{store_name}.armoiar.com",
           mail_from_address: mail_from_address,
           code: store_name,
           default_currency: 'USD'
