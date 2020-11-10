@@ -1,0 +1,42 @@
+<% if admin_user_signed_in? %>
+  <li>
+    <%= link_to('Logout', destroy_admin_user_session_path) %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to('Login', new_admin_user_session_path) %>
+  </li>
+<% end %>
+
+<div class="container well">
+  <h4><%= AdminUser.first.email %></h4>
+  <!-- Default form contact -->
+
+    <%= form_with(url: admin_users_create_store_path(format: :json), method: :post ,class:"text-center border border-light p-5") do %>
+
+    <p class="h4 mb-4">Create Spree Shop</p>
+
+    <%= text_field_tag(:shop_name, "", class: "form-control mb-4", placeholder: "Shop / Domain Name" ) %>
+    <%= email_field_tag(:admin_email, "", class: "form-control mb-4", placeholder: "Admin Email" ) %>
+    <%= password_field_tag(:admin_password, "", class: "form-control mb-4", placeholder: "Admin Password" ) %>
+    <%= email_field_tag(:support_email, "", class: "form-control mb-4", placeholder: "Support Email" ) %>
+
+
+
+    <!-- Message -->
+    <div class="form-group">
+      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+    </div>
+
+    <!-- Copy -->
+    <div class="custom-control custom-checkbox mb-4">
+      <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+      <label class="custom-control-label" for="defaultContactFormCopy">I agree with terms and conditions</label>
+    </div>
+
+    <!-- Send button -->
+    <%= submit_tag "create",  class:"btn btn-info btn-block" %>
+
+  <% end %>
+  <!-- Default form contact -->
+</div>

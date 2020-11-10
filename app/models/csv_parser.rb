@@ -5,7 +5,8 @@ class CsvParser
   TAXONOMY_ATTRIBUTES = { name: I18n.t('spree.taxonomy_categories_name') }
 
   def self.process
-    csv_text = File.read("Grocery_store_catalog_india.csv")
+    # csv_text = File.read("Grocery_store_catalog_india.csv")
+    csv_text = File.read("test_grocery_store_catalog_india.csv")
     csv = CSV.parse(csv_text, :headers => true)
     csv.each_with_index do |row, index|
       # break if index >= 20
